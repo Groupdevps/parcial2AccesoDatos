@@ -108,4 +108,10 @@ public class UsuarioController {
             System.out.println("Error al eliminar el usuario: " + e.getMessage());
         }
     }
+    
+    public Usuario buscarUsuario(String id ){
+        Usuario usu;
+//        = new Usuario()
+        return usu;
+    }
 }

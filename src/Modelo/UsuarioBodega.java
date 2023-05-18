@@ -32,9 +32,9 @@ public class UsuarioBodega {
                 ps.setString(1,us.getNombre() );
                 ps.setString(2,us.getCorreo());
                 ps.setString(3,us.getContraseña());
-                ps.setString(4, us.getEdad());
+//                ps.setString(4, us./*getEdad*/());
                 ps.setString(5, us.getTipo_usuario());
-                ps.setString(6, us.getDinero());
+//                ps.setString(6, us.getDinero());
                 rest = ps.executeUpdate();
             }
         }catch(SQLException e){
