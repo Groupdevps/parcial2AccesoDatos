@@ -12,15 +12,19 @@ package Vista;
 import Control.UsuarioController;
 import java.util.Scanner;
 import control.*;
-import helper.onectar;
+import Helper.Conectar;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 public class vistaUSU {
     Scanner sc = new Scanner(System.in);
     String nombre,correo, contraseña, edad, tipoUSU, dinero;
-    UsuarioController  uc = new UsuarioController();
+    //UsuarioController  uc = new UsuarioController();
     
     public vistaUSU() {
         menu();
@@ -84,4 +88,63 @@ public class vistaUSU {
           if (op==1)this.menu();
           if (op==2)this.CrearUsuario();    
     }
+    
+    public void listarUsuario(){
+        int op;
+        ArrayList<String> usuarios =uc.ListarUsuario();
+        for (int i=0;i<usuarios.size();i++){
+            System.out.println(usuarios.get(i));
+            
+        }
+        System.out.println("1. Regresar al Menu Principal");
+        System.out.println("2. Listar nuevamente");
+        op = sc.nextInt();
+        if (op==1)this.menu();
+        if (op==2)this.listarUsuario();
+    }
+    
+    
+    public void eliminarUsuario(){
+        int op;
+        ArrayList<String> usuarios =uc.ListarUsuario();
+        for (int i=0;i<usuarios.size();i++){
+            System.out.println(usuarios.remove(i));
+            
+        }
+        System.out.println("1. Regresar al Menu Principal");
+        System.out.println("2. Listar nuevamente");
+        op = sc.nextInt();
+        if (op==1)this.menu();
+        if (op==2)this.listarUsuario();
+    }
+    
+    public void modificarUsuario(){
+        int op;
+        ArrayList<String> usuarios =uc.ListarUsuario();
+        for (int i=0;i<usuarios.size();i++){
+            System.out.println(usuarios.remove(i));
+            
+        }
+        System.out.println("1. Regresar al Menu Principal");
+        System.out.println("2. Listar nuevamente");
+        op = sc.nextInt();
+        if (op==1)this.menu();
+        if (op==2)this.listarUsuario();
+    }
+    
+    
+    /*public int eliminarUsuario(){
+    int rest=0;
+    try{
+        Connection condb = conn.getConexion();
+        String query = "DELETE FROM usuarios WHERE nombre=? ";
+        PreparedStatement ps = condb.prepareStatement(query);
+        ps.setString(1, nombre);
+        rest = ps.executeUpdate();
+    }catch(SQLException e){
+       JOptionPane.showMessageDialog(null, e.toString());
+    }
+    return rest;  
+    }*/
+    
 }
