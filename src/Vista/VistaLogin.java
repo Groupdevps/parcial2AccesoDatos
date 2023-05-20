@@ -4,7 +4,9 @@
  */
 package Vista;
 
+import Control.UsuarioController;
 import Helper.Md5;
+import Modelo.Usuario;
 import java.util.Scanner;
 
 /**
@@ -15,19 +17,44 @@ public class VistaLogin {
     Scanner sc = new Scanner(System.in);
     String nombre;
     String password;
+    
     public VistaLogin() {
-        boolean acceso = true;
-        while(acceso){
+        boolean login = true;        
+        Usuario user = null;
+        
+        UsuarioController usuCon = new UsuarioController();
+        Md5 helperMd5 = new Md5();
+        
+        while(login){
             System.out.println(" ****** Login *********");
-            System.out.println("nombre");
+            System.out.println("nombre : ");
             nombre = sc.next();
-            System.out.println("Contrasena");
+            System.out.println("Contrasena : ");
             password = sc.next();
-            
-//            Md5.verificarContrasena(password, hassPassword); 
-            
+            user = usuCon.buscarUsuario(nombre);
+            // Validar usuario
+            if(user != null){
+                String hashPassword = helperMd5.getMd5(password);
+                // Verificar contrasena                 
+                if (hashPassword.equals(user.getContrasena())){   
+                    System.out.println("**************** Usuario logueado ***********");
+                    System.out.println("Bienvenido " + user.getNombre());
+                    System.out.println("*********************************************");
+                    if (user.getTipo_usuario().equals("admin")){//
+                        MenuAdmin admin = new MenuAdmin(user);
+                        admin.mostrarMenu();
+                    }else{
+                        MenuUsuario usuario = new MenuUsuario(user);
+                        usuario.MostrarMenu();
+                    }
+                }else{
+                    System.out.println("Contrasena Incorrecta ! Intente de nuevo");
+                }
+            }else{
+                System.out.println("Usuario no encontrado ");
+            }   
+            System.out.println("***************************************");
         }
-        Menu();
     }
      
     public void Menu(){        
@@ -43,10 +70,10 @@ public class VistaLogin {
             op = sc.nextInt();
             switch(op){
                 case 1:
-                    this.CrearUsuario();
+//                    this.CrearUsuario();
                     break;
                 case 2:
-                    this.ListarUsuario();
+//                    this.ListarUsuario();
                     break;               
                 
                 default:

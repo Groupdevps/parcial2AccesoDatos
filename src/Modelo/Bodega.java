@@ -14,6 +14,13 @@ public class Bodega {
     private int numero_cajas;
     private float precio_caja;
     private int restriccion_edad;
+    public Bodega(String codigo, String nombre, int numero_cajas, float precio, int restriccion){
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.numero_cajas = numero_cajas;
+        this.precio_caja = precio;
+        this.restriccion_edad = restriccion;
+    }
 
     /**
      * @return the codigo
@@ -84,5 +91,8 @@ public class Bodega {
     public void setRestriccion_edad(int restriccion_edad) {
         this.restriccion_edad = restriccion_edad;
     }
-    
+      
+    public String toString(){
+        return "Codigo =  " + this.codigo + ", nombre = " + this.nombre + ", N. Cajas = " + this.numero_cajas + ", precio caja = $" + this.precio_caja + ", Restriccion edad = " + this.restriccion_edad;  
+    }
 }

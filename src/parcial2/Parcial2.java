@@ -7,7 +7,10 @@ package parcial2;
 
 /**
  *
- * @author Lab redes
+ * @author Lab redes, 
+ * Daniel Martinez Salas
+ * Fabian Raminez 
+ * Daniel Rodriguez
  */
 public class Parcial2 {
 

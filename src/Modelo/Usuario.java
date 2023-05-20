@@ -11,15 +11,23 @@ package Modelo;
  */
 public class Usuario {
 
-    public Usuario(int aInt, String string, String string1, String string2, int aInt1, String string3, double aDouble) {
-    }
+    private int id = 0;
     private String nombre;
     private String correo;
     private String contrasena;
     private int edad;
     private String tipo_usuario;
     private float dinero;
-
+    
+    public Usuario(int id, String nombre, String correo, String contrasena, int edad, String tipo_usuario, float dinero) {
+        this.id = id;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.contrasena = contrasena;
+        this.edad = edad;
+        this.tipo_usuario = tipo_usuario;
+        this.dinero = dinero;
+    }
     /**
      * @return the nombre
      */
@@ -107,5 +115,22 @@ public class Usuario {
     String getContraseña() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
     
+    public String toString(){
+        return "Id = " + this.id + ", Nombre = " + this.nombre + ", correo = " + this.correo + ", Edad = " + this.edad + ", Tipo usuario = " + this.tipo_usuario + ", dinero " + this.dinero;
+    }
 }

@@ -24,8 +24,9 @@ public class Conectar {
     public Connection getConexion (){
         Connection con = null;
         try{
-              Class.forName("com.mysql.jdbc.Driver");
-              con = DriverManager.getConnection(this.cadena,this.usuario,this.password);
+//          Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(this.cadena,this.usuario,this.password);
         }catch(Exception e){
             System.out.println(e.toString());
         }

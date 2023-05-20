@@ -41,11 +41,5 @@ public class Md5 {
         }
     }
     
-    public boolean verificarContrasena(String input, String md5){        
-        String password = getMd5(input);
-        if (input == md5){
-            return true;
-        }           
-        return false;
-    }
+    
 }

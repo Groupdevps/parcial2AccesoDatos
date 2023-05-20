@@ -11,7 +11,33 @@ package Modelo;
 public class Compra {
     private int id;
     private String fecha;
+    private String codigoBodega;
+    private int numero_cajas;
     private float total;
+    
+    public Compra(int id, String fecha, String codigo, int numero, float total){
+        this.id = id;
+        this.fecha = fecha;
+        this.codigoBodega = codigo;
+        this.numero_cajas = numero;
+        this.total = total;
+    }
+
+    public String getCodigoBodega() {
+        return codigoBodega;
+    }
+
+    public void setCodigoBodega(String codigoBodega) {
+        this.codigoBodega = codigoBodega;
+    }
+
+    public int getNumero_cajas() {
+        return numero_cajas;
+    }
+
+    public void setNumero_cajas(int numero_cajas) {
+        this.numero_cajas = numero_cajas;
+    }
 
     /**
      * @return the id
@@ -53,6 +79,11 @@ public class Compra {
      */
     public void setTotal(float total) {
         this.total = total;
+    }
+
+    @Override
+    public String toString() {
+        return "Compra{" + "id=" + id + ", fecha=" + fecha + ", codigoBodega=" + codigoBodega + ", numero_cajas=" + numero_cajas + ", total=" + total + '}';
     }
     
     
