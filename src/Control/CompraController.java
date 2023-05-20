@@ -25,7 +25,7 @@ public class CompraController {
                     .format(LocalDateTime.now());
         System.out.println(" ******************************* \n "
             + "Fecha de Compra = " + dateTime + 
-            "\n Produco = " + bod.getNombre() + 
+            "\n Producto = " + bod.getNombre() + 
             "\n Numero de cajas = " + numero + 
             "\n Total = " + total + 
             "\n *********************************");

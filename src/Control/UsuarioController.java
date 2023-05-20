@@ -38,6 +38,11 @@ public class UsuarioController {
     }
     
     public int CrearUsuario(String nombre, String correo, String contrasena, int edad, String tipo_usuario, float dinero){
+        Usuario usr = buscarUsuario(nombre);
+        if (usr != null && usr.getNombre().equals(nombre)){
+            System.out.println("Ya existe un usuario con mismo Nombre");
+            return 0;
+        }
         Usuario user = new Usuario(0,nombre, correo, helperMd5.getMd5(contrasena), edad, tipo_usuario, dinero);
         return usuBodega.addusuario(user);
     } 
@@ -52,6 +57,13 @@ public class UsuarioController {
     }
     
     public int modificarUsuario(Usuario usr){
+        Usuario user = buscarUsuario(usr.getNombre());
+        if (user != null && user.getNombre().equals(usr.getNombre())){
+            if (usr.getId() != (user.getId()) ){
+                System.out.println("Ya existe un usuario con mismo Nombre");
+                return 0;
+            }            
+        }
         usr.setContrasena(helperMd5.getMd5(usr.getContrasena()));
         return usuBodega.editarUsuario(usr);
     }

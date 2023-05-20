@@ -97,7 +97,12 @@ public class MenuUsuario {
                     bod.setNumero_cajas(cajas);
                     int res = this.compra.comprar(codigo, numero, total, bod);
                     if (res == 1){
-                        System.out.println("La Compra ha sido Exitosa");
+                        float restante = this.user.getDinero() - total;
+                        System.out.println("La Compra ha sido Exitosa! ");
+                        System.out.println("Su nuevo saldo es : $" + restante);
+                        System.out.println("Cajas en Stock : "+ cajas);
+                        this.user.setDinero(restante);
+                        uc.modificarUsuario(this.user);
                     }else{
                         System.out.println("No se ha podido completar su compra");
                     }
